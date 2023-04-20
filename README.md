@@ -1,17 +1,22 @@
-# Info
+# Weather App
 
-Rapid API does not offer an API that enables authentication and provides an API key for passing along with open APIs in order to obtain weather forecasts.
+Rapid API does not provide an authentication API that allows users to obtain a weather forecast API key for authentication purposes. However, the only way to obtain an API key is through Rapid API's user interface portal.
 
-# Weather
-#REST API
+# REST API
 
 The REST API to the weather app is described below.
 
-##Get weather summary
+  /forecast/{city_name}/{forecast_type}
 
-###Request
+  city_name =  well-known cities such as Mumbai and Berlin
 
-'Accept: application/json' 'client-secret: <Client Secret>' 'client-id: <Client Id>' http://localhost:8080/forecast/<city_name(Mumbai)>/summary
+  forecast_type = summary / hourly.
+
+## Get weather summary
+
+### Request
+
+'Accept: application/json' 'client-secret: <Client Secret>' 'client-id: <Client Id>' http://localhost:8080/forecast/Mumbai/summary
                                                                                                                                                
 ### Response
 
@@ -21,11 +26,11 @@ The REST API to the weather app is described below.
    Transfer-Encoding: chunked
    Keep-Alive: timeout-60
 
-##Get weather hourly
+## Get weather hourly
 
-###Request
+### Request
 
-'Accept: application/json' 'client-secret: <Client Secret>' 'client-id: <Client Id>' http://localhost:8080/forecast/<city_name(Mumbai)>/hourly
+'Accept: application/json' 'client-secret: <Client Secret>' 'client-id: <Client Id>' http://localhost:8080/forecast/Mumbai/hourly
   
 ### Response
 
