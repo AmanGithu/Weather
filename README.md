@@ -1,6 +1,6 @@
 # Weather App
 
-Rapid API does not provide an authentication API that allows users to obtain a weather forecast API key for authentication purposes. However, the only way to obtain an API key is through Rapid API's user interface portal.
+The "Weather" application comprises an API that can deliver weather forecast summaries or hourly updates in JSON format.
 
 Warning! - Please be aware that Rapid API only provides 10 free APIs, which means that there is a strict limit of 10 API calls available.
 
