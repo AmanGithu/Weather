@@ -1,13 +1,12 @@
 package com.dice.weather.controller;
 
 import com.dice.weather.service.WeatherService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
 
 @RestController
 @RequestMapping("/forecast")
@@ -17,18 +16,15 @@ public class WeatherController {
 
     @GetMapping("/{location}/{forecastType}")
     public ResponseEntity<? extends Object> getWeather(@PathVariable String location,
-                             @PathVariable String forecastType,
-                             @RequestHeader("client-id") String clientId,
-                             @RequestHeader("client-secret") String clientSecret)
+                                                       @PathVariable String forecastType)
     {
-        if(!isValidClient(clientId, clientSecret)) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-        JsonNode forecastDetail = weatherService.getWeather(location, forecastType);
+        JsonNode forecastDetail = null;
+        forecastDetail = weatherService.getWeather(location, forecastType);
         return ResponseEntity.ok(forecastDetail);
     }
 
-    private boolean isValidClient(String clientId, String clientSecret) {
-        return true;
+    @ExceptionHandler(value = HttpClientErrorException.class)
+    public ResponseEntity<Object> exception(HttpClientErrorException exception) {
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
     }
 }

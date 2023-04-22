@@ -1,5 +1,6 @@
 package com.dice.weather.service.impl;
 
+import com.dice.weather.common.TokenGenerator;
 import com.dice.weather.service.WeatherService;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.core.ParameterizedTypeReference;
@@ -7,14 +8,11 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 public class WeatherServiceImpl implements WeatherService {
 
     private RestTemplate restTemplate;
-
-    private HttpHeaders headers;
 
     private String url;
     private String apiKey;
@@ -48,9 +46,15 @@ public class WeatherServiceImpl implements WeatherService {
     }
 
     public HttpHeaders getHeaders() {
+        TokenGenerator tokenGenerator = new TokenGenerator();
+        String clintId = tokenGenerator.generateClintId();
+        String clintSecret = tokenGenerator.generateClintSecret();
+
         HttpHeaders headers = new HttpHeaders();
         headers.set("X-RapidAPI-Key", apiKey);
         headers.set("X-RapidAPI-Host", "forecast9.p.rapidapi.com");
+        headers.set("client-id", clintId);
+        headers.set("client-secret", clintSecret);
         return headers;
     }
 }
