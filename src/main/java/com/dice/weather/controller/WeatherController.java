@@ -25,6 +25,6 @@ public class WeatherController {
 
     @ExceptionHandler(value = HttpClientErrorException.class)
     public ResponseEntity<Object> exception(HttpClientErrorException exception) {
-        return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("RapidAPI :" + exception.getMessage(), HttpStatus.NOT_FOUND);
     }
 }

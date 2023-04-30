@@ -1,6 +1,5 @@
 package com.dice.weather.service.impl;
 
-import com.dice.weather.common.TokenGenerator;
 import com.dice.weather.service.WeatherService;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.core.ParameterizedTypeReference;
@@ -45,16 +44,9 @@ public class WeatherServiceImpl implements WeatherService {
         return sb.toString();
     }
 
-    public HttpHeaders getHeaders() {
-        TokenGenerator tokenGenerator = new TokenGenerator();
-        String clintId = tokenGenerator.generateClintId();
-        String clintSecret = tokenGenerator.generateClintSecret();
-
-        HttpHeaders headers = new HttpHeaders();
+    public HttpHeaders getHeaders() {HttpHeaders headers = new HttpHeaders();
         headers.set("X-RapidAPI-Key", apiKey);
         headers.set("X-RapidAPI-Host", "forecast9.p.rapidapi.com");
-        headers.set("client-id", clintId);
-        headers.set("client-secret", clintSecret);
         return headers;
     }
 }

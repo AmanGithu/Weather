@@ -1,3 +1,8 @@
 weather-api:
   url: https://forecast9.p.rapidapi.com/rapidapi/forecast
   key: 2a63d49cccmshdc047f6e88c2d1fp134903jsnefab4fdf6c6c
+  key1: qwerqwer
+
+jwt:
+  secret: 2a63d49cccmshdc047f6e88c2d1fp134903jsnefab4fdf6c6c
+  jwtExpirationInMs: 600000
