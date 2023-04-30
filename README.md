@@ -1,6 +1,6 @@
 # Weather App
 
-Rapid API does not provide an authentication API that allows users to obtain a weather forecast API key for authentication purposes. However, the only way to obtain an API key is through Rapid API's user interface portal.
+The "Weather" application comprises an API that can deliver weather forecast summaries or hourly updates in JSON format.
 
 Warning! - Please be aware that Rapid API only provides 10 free APIs, which means that there is a strict limit of 10 API calls available.
 
@@ -9,7 +9,7 @@ Warning! - Please be aware that Rapid API only provides 10 free APIs, which mean
     The REST API to the weather app is described below.
     
     /forecast/{city_name}/{forecast_type} :
-        city_name =  well-known cities such as Mumbai and Berlin
+        city_name =  well-known cities such as Mumbai or Berlin
         forecast_type = summary / hourly.
 
 ## Get weather summary
@@ -18,7 +18,7 @@ Warning! - Please be aware that Rapid API only provides 10 free APIs, which mean
 
 `GET /forecast/{city_name}/{forecast_type}`
 
-    'Accept: application/json' 'client-secret: <Client Secret>' 'client-id: <Client Id>' http://localhost:8080/forecast/Mumbai/summary
+    'Accept: application/json' http://localhost:8080/forecast/Mumbai/summary
                                                                                                                                                
 ### Response
 
@@ -33,7 +33,7 @@ Warning! - Please be aware that Rapid API only provides 10 free APIs, which mean
 ### Request
 `GET /forecast/{city_name}/{forecast_type}`
 
-    'Accept: application/json' 'client-secret: <Client Secret>' 'client-id: <Client Id>' http://localhost:8080/forecast/Mumbai/hourly
+    'Accept: application/json' http://localhost:8080/forecast/Mumbai/hourly
   
 ### Response
 
